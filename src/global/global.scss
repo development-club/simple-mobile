@@ -1,0 +1,51 @@
+@import './variable.scss';
+@import './theme.scss';
+
+:root {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  color: var (--#{$class-prefix}-color-text);
+  font-size: var (--#{$class-prefix}-font-size-main);
+  font-family: var (--#{$class-prefix}-font-family);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var (--#{$class-prefix}-color-primary);
+  transition: opacity ease-in-out 0.2s;
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.#{$class-prefix}-plain-anchor {
+  color: unset;
+  transition: none;
+  &:active {
+    opacity: unset;
+  }
+}
+
+body.#{$class-prefix}-overflow-hidden {
+  overflow: hidden !important;
+}
+
+div.#{$class-prefix}-one-px-tester {
+  height: 1px;
+  width: 0;
+  position: fixed;
+  right: -100vw;
+  bottom: -100vh;
+  user-select: none;
+  pointer-events: none;
+}

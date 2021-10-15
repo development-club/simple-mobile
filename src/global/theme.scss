@@ -1,0 +1,22 @@
+@import './variable.scss';
+:root {
+  --#{$class-prefix}-color-primary: #1677ff;
+  --#{$class-prefix}-color-success: #00b578;
+  --#{$class-prefix}-color-warning: #ff8f1f;
+  --#{$class-prefix}-color-danger: #ff3141;
+  --#{$class-prefix}-color-white: #ffffff;
+  --#{$class-prefix}-color-weak: #999999;
+  --#{$class-prefix}-color-light: #cccccc;
+  --#{$class-prefix}-border-color: #eeeeee;
+  --#{$class-prefix}-font-size-main: 13px;
+  --#{$class-prefix}-color-text: #333333;
+
+  --#{$class-prefix}-font-fahily: -apple-system, blinkmacsystemfont,
+    'Helvetica Neue', helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui',
+    'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+
+  --#{$class-prefix}-z-index-mask: 1000;
+  --#{$class-prefix}-z-index-popup: 1000;
+  --#{$class-prefix}-z-index-popover: 1030;
+  --#{$class-prefix}-z-index-floating-panel: 900;
+}
