@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
@@ -10,11 +11,18 @@
     "baseUrl": "./",
     "strict": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "simple-mobile": ["src/index.ts"],
+      "simple-mobile/src/*": ["src/*"],
+      "simple-mobile/lib/*": ["src/*"],
+      "demos": ["src/demos/index.ts"],
+      "utils": ["src/utils"]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true
   },
+  "include": ["src", ".dumi/theme"],
   "exclude": [
     "node_modules",
     "lib",
@@ -25,5 +33,12 @@
     "test",
     "docs",
     "tests"
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "resolveJsonModule": true,
+      "noImplicitAny": false
+    }
+  }
 }
