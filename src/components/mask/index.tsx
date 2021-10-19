@@ -10,7 +10,7 @@ import {
 } from '../../utils/body-scroll-lock'
 import './mask.scss'
 
-const classPrefix = `simple-mask`
+const classPrefix = `ah-mask`
 export type MaskProps = {
   visible?: boolean // 是否显示
   onMaskClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void // 点击蒙层自身触发

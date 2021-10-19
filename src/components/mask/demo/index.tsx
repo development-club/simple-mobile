@@ -1,6 +1,6 @@
 import React, { useState, FC } from 'react'
 import { Mask, Button, Space } from 'simple-mobile'
-// import { DemoBlock } from 'demos'
+import { DemoBlock } from 'demos'
 import './demo.scss'
 
 const Simple: FC = () => {
@@ -56,18 +56,18 @@ const CustomOpacity: FC = () => {
 export default () => {
   return (
     <>
-      {/* <DemoBlock title='基础用法'> */}
-      <Simple />
-      {/* </DemoBlock> */}
-      {/* <DemoBlock title='遮罩层的颜色深度'> */}
-      <Space wrap>
-        <Dark />
-        <CustomOpacity />
-      </Space>
-      {/* </DemoBlock> */}
-      {/* <DemoBlock title='自定义内容'> */}
-      <WithContent />
-      {/* </DemoBlock> */}
+      <DemoBlock title='基础用法'>
+        <Simple />
+      </DemoBlock>
+      <DemoBlock title='遮罩层的颜色深度'>
+        <Space wrap>
+          <Dark />
+          <CustomOpacity />
+        </Space>
+      </DemoBlock>
+      <DemoBlock title='自定义内容'>
+        <WithContent />
+      </DemoBlock>
     </>
   )
 }
