@@ -10,12 +10,12 @@
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
+    "lib": ["ES2015", "DOM"],
     "paths": {
       "simple-mobile": ["src/index.ts"],
       "simple-mobile/src/*": ["src/*"],
       "simple-mobile/lib/*": ["src/*"],
-      "demos": ["src/demos/index.ts"],
-      "utils": ["src/utils"]
+      "demos": ["src/demos/index.ts"]
     },
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -27,12 +27,11 @@
     "node_modules",
     "lib",
     "es",
-    "dist",
-    "typings",
-    "**/__test__",
-    "test",
-    "docs",
-    "tests"
+    "dist"
+    // "typings",
+    // "test",
+    // "docs",
+    // "tests"
   ],
   "ts-node": {
     "compilerOptions": {

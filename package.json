@@ -46,5 +46,22 @@
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6 || ^17.0.0"
+  },
+  "types": "./es/index.d.ts",
+  "unpkg": "./umd/simple-mobile.js",
+  "GravityCDN": "./umd/simple-mobile.js",
+  "sideEffects": [
+    "*.css",
+    "*.less",
+    "./es/index.js",
+    "./src/index.ts",
+    "./es/global/index.js",
+    "./src/global/index.ts"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

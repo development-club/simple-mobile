@@ -4,10 +4,5 @@ import type { IRouteComponentProps } from '@umijs/types'
 import './styles/layout.scss'
 
 export default ({ children, ...props }: IRouteComponentProps<{}, {}>) => (
-  <MobileLayout {...props}>
-    <>
-      <button>反馈</button>
-      {children}
-    </>
-  </MobileLayout>
+  <MobileLayout {...props}>{children}</MobileLayout>
 )
