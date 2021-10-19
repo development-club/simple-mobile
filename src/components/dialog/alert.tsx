@@ -1,0 +1,36 @@
+import { ReactNode } from 'react'
+import { show } from './show'
+import { DialogProps } from './index'
+import { mergeProps } from 'simple-mobile/utils/with-default-props'
+
+export type DialogAlertProps = Omit<
+  DialogProps,
+  'visible' | 'closeOnAction' | 'actions'
+> & {
+  confirmText?: ReactNode
+  onConfirm?: () => void | Promise<void>
+}
+
+const defaultProps = {
+  confirmText: '我知道了',
+}
+
+export function alert(p: DialogAlertProps) {
+  const props = mergeProps(defaultProps, p)
+  return new Promise<void>(resolve => {
+    show({
+      ...props,
+      closeOnAction: true,
+      actions: [
+        {
+          key: 'confirm',
+          text: props.confirmText,
+        },
+      ],
+      onAction: props.onConfirm,
+      onClose: () => {
+        resolve()
+      },
+    })
+  })
+}
