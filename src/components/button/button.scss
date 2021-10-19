@@ -1,4 +1,4 @@
-$class-prefix-button: 'ah-button';
+@import '../../global/variable.scss';
 
 .#{$class-prefix-button} {
   --color: var(--ah-color-text);
@@ -130,7 +130,7 @@ $class-prefix-button: 'ah-button';
     align-items: center;
     justify-content: center;
 
-    >.ah-loading {
+    > .ah-loading {
       opacity: 0.6;
     }
   }

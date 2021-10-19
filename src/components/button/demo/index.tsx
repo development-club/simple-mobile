@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Space, Icon } from '../../../index'
-import { DemoBlock } from 'ahtm-ui/demos'
+import { Button, Space, Icon } from 'simple-mobile'
+import { DemoBlock } from '../../../demos'
 
 export default () => {
   return (
