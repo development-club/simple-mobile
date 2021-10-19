@@ -1,0 +1,41 @@
+$class-prefix-letter: 'ah-letter';
+
+.#{$class-prefix-letter} {
+   height: 100%;
+   position: relative;
+   display: flex;
+   width: 50px;
+   align-items: center;
+  &-right {
+    justify-content: flex-end;
+  }
+  &-left {
+    justify-content: flex-start;
+  }
+
+  ul {
+    top: 84px;
+    li {
+      padding: 2px 5px;
+      font-size: 10px;
+      color: #7e8da6;
+      letter-spacing: 0;
+      text-align: center;
+      span {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+      }
+      &.active {
+        color: #fff;
+        span {
+          background: #ff6600;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
