@@ -6,9 +6,9 @@
 }
 
 body {
-  color: var (--#{$class-prefix}-color-text);
-  font-size: var (--#{$class-prefix}-font-size-main);
-  font-family: var (--#{$class-prefix}-font-family);
+  color: var(--#{$class-prefix}-color-text);
+  font-size: var(--#{$class-prefix}-font-size-main);
+  font-family: var(--#{$class-prefix}-font-family);
 }
 
 * {
@@ -21,7 +21,7 @@ button {
 }
 
 a {
-  color: var (--#{$class-prefix}-color-primary);
+  color: var(--#{$class-prefix}-color-primary);
   transition: opacity ease-in-out 0.2s;
   &:active {
     opacity: 0.8;

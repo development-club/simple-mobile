@@ -1,3 +1,14 @@
 .__dumi-default-layout[data-site-mode='true'][data-show-slugs='true'] {
   padding-right: 38px;
 }
+.__dumi-default-mobile-previewer {
+  // display: flex;
+  // justify-content: flex-start;
+  // align-items: stretch;
+  // width: 100%;
+}
+@media only screen and (max-width: 1440px) {
+  .__dumi-default-mobile-previewer {
+    height: 600px;
+  }
+}

@@ -3,7 +3,7 @@ import React from 'react'
 export default () => {
   return (
     <iframe
-      src='https://codesandbox.io/embed/antd-mobile-snrxr?fontsize=14&hidenavigation=1&theme=dark'
+      src='https://codesandbox.io/embed/simple-mobile-mjccx?fontsize=14&hidenavigation=1&theme=dark'
       style={{
         width: '100%',
         height: '500px',

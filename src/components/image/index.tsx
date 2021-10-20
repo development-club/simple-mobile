@@ -1,8 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react'
 import classNames from 'classnames'
-import { ElementProps } from 'simple-mobile/utils/element-props'
-import { mergeProps } from 'simple-mobile/utils/with-default-props'
-import Icon from 'simple-mobile/components/icon'
+import { ElementProps, mergeProps } from 'utils'
+import { Icon } from 'simple-mobile'
 import './image.scss'
 const classPrefix = `ah-image`
 

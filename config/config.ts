@@ -3,7 +3,7 @@
 const navs = [
   {
     title: '指南',
-    path: '/guide',
+    path: '/guide/quick-start',
   },
   {
     title: '组件',
@@ -51,7 +51,12 @@ const menus = {
     {
       title: '基础',
       meta: {},
-      children: ['/components/button', '/components/icon', '/components/space'],
+      children: [
+        '/components/button',
+        '/components/icon',
+        '/components/space',
+        '/components/image',
+      ],
     },
     {
       title: '弹窗 & 提示',

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Button, Space, Toast, Icon } from '../../../index'
-import { DemoBlock } from 'simple-mobile/demos'
+import { Button, Space, Toast, Icon } from 'simple-mobile'
+import { DemoBlock } from 'demos'
 
 export default () => {
   return (

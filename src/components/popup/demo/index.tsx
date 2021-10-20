@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { DemoBlock } from 'simple-mobile/demos'
-import { Popup, Space, Button } from '../../../index'
+import { DemoBlock } from 'demos'
+import { Popup, Space, Button } from 'simple-mobile'
 
 const Stack = () => {
   const [visible1, setVisible1] = useState(false)

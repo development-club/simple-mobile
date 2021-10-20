@@ -10,6 +10,7 @@
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
+    "typeRoots": ["./src/typings", "./node_modules/@types"],
     "lib": ["ES2015", "DOM"],
     "paths": {
       "simple-mobile": ["src/index.ts"],

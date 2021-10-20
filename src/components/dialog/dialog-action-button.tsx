@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import classNames from 'classnames'
-import Button from 'simple-mobile/components/button'
+import { Button } from 'simple-mobile'
 
 const classPrefix = 'ah-dialog'
 export type Action = {
