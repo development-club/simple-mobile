@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const scss = require('gulp-sass')
+const scss = require('gulp-sass')(require('sass'))
 const path = require('path')
 const postcss = require('gulp-postcss')
 const babel = require('gulp-babel')
@@ -57,7 +57,7 @@ function tsCJS() {
 function tsES() {
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'ESNext',
+    module: 'esnext',
   })
   return gulp
     .src(['src/**/*.{ts,tsx}'], {

@@ -16,7 +16,8 @@
       "simple-mobile": ["src/index.ts"],
       "simple-mobile/src/*": ["src/*"],
       "simple-mobile/lib/*": ["src/*"],
-      "demos": ["src/demos/index.ts"]
+      "demos": ["src/demos/index.ts"],
+      "utils": ["src/utils/index.ts"]
     },
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -24,16 +25,7 @@
     "noImplicitAny": true
   },
   "include": ["src", ".dumi/theme"],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es",
-    "dist"
-    // "typings",
-    // "test",
-    // "docs",
-    // "tests"
-  ],
+  "exclude": ["node_modules", "lib", "es", "dist"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
