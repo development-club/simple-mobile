@@ -32,7 +32,7 @@ const defaultProps = {
  *  字母分类位置定位
  * @param callback
  */
-export const letterPosition = (letterOffset, callback) => {
+export const letterPosition = (letterOffset: [], callback: Function) => {
   letterOffset.forEach((item, index) => {
     if (callback instanceof Function) callback(item, index)
   })
@@ -42,12 +42,13 @@ export const letterPosition = (letterOffset, callback) => {
  * @param p
  */
 const Letter: FC<LetterProps> = p => {
-  const props = mergeProps(defaultProps, p)
+  const props: any = mergeProps(defaultProps, p)
   const [list, setList] = useState([])
-  const clickHandle = letter => {
-    letterPosition(props.letterOffset, item => {
+  const clickHandle = (letter: string) => {
+    letterPosition(props.letterOffset, (item: any) => {
       if (item.letter === letter) {
-        document.querySelector(`.${classPrefix}-position`).scrollTop = item.top
+        const dom = document.querySelector(`.${classPrefix}-position`)
+        if (dom) dom.scrollTop = item.top
       }
     })
   }
@@ -67,18 +68,22 @@ const Letter: FC<LetterProps> = p => {
       style={props.style}
     >
       <ul>
-        {props.letterOffset.map(item => (
-          <li
-            key={item.letter}
-            className={classNames(
-              item.letter === props.currentLetter ? 'active' : '',
-              props.checkClassName
-            )}
-            onClick={() => clickHandle(item.letter)}
-          >
-            <span>{item.letter}</span>
-          </li>
-        ))}
+        {props.letterOffset.map((item: any) =>
+          item ? (
+            <li
+              key={item.letter}
+              className={classNames(
+                item.letter === props.currentLetter ? 'active' : '',
+                props.checkClassName
+              )}
+              onClick={() => clickHandle(item.letter)}
+            >
+              <span>{item.letter}</span>
+            </li>
+          ) : (
+            ''
+          )
+        )}
       </ul>
     </div>
   )

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { show } from './show'
 import { DialogProps } from './index'
-import { mergeProps } from 'simple-mobile/utils/with-default-props'
+import { mergeProps } from 'utils'
 
 export type DialogAlertProps = Omit<
   DialogProps,

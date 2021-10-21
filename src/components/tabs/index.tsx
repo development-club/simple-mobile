@@ -1,9 +1,11 @@
 import React, { FC, ReactNode, ReactElement, ComponentProps } from 'react'
 import classNames from 'classnames'
-import { ElementProps } from '../../utils/element-props'
-import { getNativeAttributes } from '../../utils/get-native-attributes'
-import { useNewControllableValue } from '../../utils/use-controllable-value'
-import { attachPropertiesToComponent } from 'simple-mobile/utils/attach-properties-to-component'
+import {
+  ElementProps,
+  attachPropertiesToComponent,
+  useNewControllableValue,
+  getNativeAttributes,
+} from 'utils'
 import './tabs.scss'
 const classPrefix = `ah-tabs`
 
@@ -38,12 +40,12 @@ const Tabs: FC<TabsProps> = props => {
     childrenRecord[key] = child.props.children
     panes.push(child)
   })
-
-  const [activeKey, setActiveKey] = useNewControllableValue({
+  const options: any = {
     value: props.activeKey,
     defaultValue: props.defaultActiveKey ?? firstActiveKey,
     onChange: props.onChange,
-  })
+  }
+  const [activeKey, setActiveKey] = useNewControllableValue(options)
 
   return (
     <div

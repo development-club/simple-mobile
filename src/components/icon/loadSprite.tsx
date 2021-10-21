@@ -9,7 +9,7 @@ const svgSprite = (contents: string) => `
       ${contents}
     </defs>
   </svg>`
-const renderSvgSprite = newIcon => {
+const renderSvgSprite = (newIcon: any) => {
   const icons = Object.assign(svgIcons, newIcon)
   const symbols = Object.keys(icons)
     .map(iconName => {
@@ -20,7 +20,7 @@ const renderSvgSprite = newIcon => {
   return svgSprite(symbols)
 }
 
-const loadSprite = newIcon => {
+const loadSprite = (newIcon: any) => {
   if (!document) {
     return
   }

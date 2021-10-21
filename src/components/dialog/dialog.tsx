@@ -81,7 +81,7 @@ const Dialog: FC<DialogProps> = p => {
             </Space>
           </div>
           <div className={`${classPrefix}-footer`}>
-            {props.actions.map((row, index) => {
+            {props.actions.map((row: any, index: number) => {
               const actions = Array.isArray(row) ? row : [row]
               return (
                 <div className={`${classPrefix}-action-row`} key={index}>

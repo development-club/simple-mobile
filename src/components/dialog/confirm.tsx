@@ -1,7 +1,7 @@
 import { show } from './show'
 import { DialogProps } from './index'
 import { ReactNode } from 'react'
-import { mergeProps } from '../../utils/with-default-props'
+import { mergeProps } from 'utils'
 
 export type DialogConfirmProps = Omit<
   DialogProps,
