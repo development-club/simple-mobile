@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react'
-import { useUpdate } from 'react-use'
+import { useUpdate } from '../index'
 
 type Options<T> = {
   value?: T
