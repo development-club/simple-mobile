@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, FC } from 'react'
 import classNames from 'classnames'
-import { useLockBodyScroll } from 'react-use'
 import { CSSTransition } from 'react-transition-group'
+import { Mask } from 'simple-mobile'
 import {
   ElementProps,
   useInitialized,
@@ -9,7 +9,6 @@ import {
   GetContainer,
   renderToContainer,
 } from '../../utils'
-import Mask from '../mask'
 import './popup.scss'
 const classPrefix = `ah-popup`
 
@@ -43,6 +42,7 @@ const Popup: FC<PopupProps> = p => {
   const props = mergeProps(defaultProps, p)
   // 动画执行完，才隐藏最外层
   const [hidden, setHidden] = useState(!props.visible)
+  const nodeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (props.visible) {
@@ -70,10 +70,6 @@ const Popup: FC<PopupProps> = p => {
 
   const initialized = useInitialized(props.visible || props.forceRender)
 
-  const ref = useRef<HTMLDivElement>(null)
-
-  useLockBodyScroll(props.visible, ref)
-
   const node = (
     <div className={cls} style={props.style} onClick={props.onClick}>
       {props.mask && (
@@ -86,6 +82,7 @@ const Popup: FC<PopupProps> = p => {
         />
       )}
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={`${classPrefix}-body`}
         in={props.visible}
         timeout={200}
@@ -93,13 +90,12 @@ const Popup: FC<PopupProps> = p => {
         onExited={afterClose}
         unmountOnExit={props.destroyOnClose}
       >
-        <div className={bodyCls} style={props.bodyStyle} ref={ref}>
+        <div className={bodyCls} style={props.bodyStyle} ref={nodeRef}>
           {initialized && props.children}
         </div>
       </CSSTransition>
     </div>
   )
-
   return renderToContainer(props.getContainer, node)
 }
 
