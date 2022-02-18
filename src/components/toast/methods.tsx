@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useUpdateEffect } from 'react-use'
-import { noop } from '../../utils/noop'
-import { resolveContainer } from '../../utils/get-container'
-
+import { noop, resolveContainer } from 'utils'
 import { InternalToast, ToastProps } from './toast'
 
 const toastArray: (() => void)[] = []
