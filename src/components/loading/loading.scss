@@ -1,16 +1,16 @@
+$dot-size:4px;
+
 .ah-loading {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 6px;
   --color: var(--am-color-weak);
-  --dot-size: 4px;
 
   &-dot {
     position: relative;
-    width: var(--dot-size);
-    height: var(--dot-size);
-    margin: 0 var(--dot-size);
+    width: $dot-size;
+    height: $dot-size;
+    margin: 0 $dot-size;
     background-color: var(--color);
     border-radius: 1px;
     animation: 2s linear infinite loading-dot-up-down;
@@ -46,11 +46,11 @@
   }
 
   10% {
-    top: calc(var(--dot-size) * -1.2);
+    top: calc($dot-size * -1.2);
   }
 
   30% {
-    top: calc(var(--dot-size) * 1.2);
+    top: calc($dot-size * 1.2);
   }
 
   40% {
