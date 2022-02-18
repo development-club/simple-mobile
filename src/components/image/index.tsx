@@ -1,10 +1,9 @@
 import React, { FC, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import { ElementProps, mergeProps } from 'utils'
-import { Icon } from 'simple-mobile'
+import Icon from '../icons'
 import './image.scss'
 const classPrefix = `ah-image`
-
 export type ImageProps = {
   src: string
   alt?: string
@@ -14,6 +13,7 @@ export type ImageProps = {
   style?: React.CSSProperties
   placeholder?: ReactNode
   fallback?: ReactNode
+  isSvg?: boolean
   onClick?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void
   onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void
 } & ElementProps &
@@ -32,20 +32,22 @@ const defaultProps = {
   fit: 'fill',
   placeholder: (
     <div className={`${classPrefix}-tip`}>
-      <Icon type='picture' className='anticon' />
+      <Icon name='aui-icon-image' className='aui-icon-image' />
     </div>
   ),
   fallback: (
     <div className={`${classPrefix}-tip`}>
-      <Icon type='disconnect' className='anticon' />
+      <Icon name='disconnect' className='disconnect' />
     </div>
   ),
 }
 
 const Image: FC<ImageProps> = p => {
   const props = mergeProps(defaultProps, p)
+
   const [loaded, setLoaded] = useState(false)
   const [failed, setFailed] = useState(false)
+
   function renderInner() {
     if (failed) {
       return props.fallback

@@ -11,17 +11,18 @@ $class-prefix-image: 'ah-image';
 
   &-tip {
     position: relative;
+    display: block;
     background-color: #f3f3f3;
     height: 100%;
     min-height: 24px;
     min-width: 24px;
 
-    >.anticon {
+    > .anticon {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      color: #999
+      color: #999;
     }
   }
 }

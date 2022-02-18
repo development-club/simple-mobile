@@ -3,7 +3,7 @@ import { Image, Space } from 'simple-mobile'
 import { DemoBlock } from 'demos'
 
 const demoSrc =
-  'http://car3.autoimg.cn/cardfs/product/g20/M0C/06/2A/248x186_q95_autohomecar__ChsElWB-guGAMHQMAAqaXJvG3Hs873.jpg'
+  'https://car3.autoimg.cn/cardfs/product/g20/M0C/06/2A/248x186_q95_autohomecar__ChsElWB-guGAMHQMAAqaXJvG3Hs873.jpg'
 
 export default () => {
   return (
