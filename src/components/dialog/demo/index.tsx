@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Toast } from 'simple-mobile'
-import { sleep } from 'utils'
+import { sleep, Queue } from 'utils'
 import { Button, Dialog, Icon, Space } from 'simple-mobile'
 import { DemoBlock, DemoDescription, lorem } from 'demos'
 
@@ -199,6 +199,13 @@ export default () => {
           <DemoDescription content='你可以手动控制 visible 状态' />
         </Space>
       </DemoBlock>
+      <DemoBlock title='序列化弹窗'>
+        <Space direction='vertical' block>
+          <Button block onClick={outQueue}>
+            队列优先级弹窗
+          </Button>
+        </Space>
+      </DemoBlock>
     </>
   )
 }
@@ -231,4 +238,85 @@ const Declarative = () => {
       />
     </>
   )
+}
+
+const outQueue = () => {
+  const queue = new Queue() // 实例化队列类
+  const eventClose = () => {
+    queue.removeFirstQueue()
+    if (!queue.isEmpty()) {
+      queue.getFirstQueue()() // 启动出队逻辑
+    }
+  }
+  const one = () =>
+    Dialog.show({
+      content: '黄河之水天上来',
+      closeOnAction: true,
+      actions: [
+        {
+          key: 'online',
+          text: '在线阅读',
+        },
+        {
+          key: 'download',
+          text: '下载文件',
+        },
+        [
+          {
+            key: 'cancel',
+            text: '取消',
+          },
+          {
+            key: 'delete',
+            text: '删除',
+            bold: true,
+            danger: true,
+          },
+        ],
+      ],
+      onClose: eventClose,
+    })
+  const two = () =>
+    Dialog.show({
+      content: '奔流到海不复返',
+      visibleCloseBtn: true,
+      closeOnAction: true,
+      actions: [
+        [
+          {
+            key: 'cancel',
+            text: '取消',
+          },
+          {
+            key: ' close',
+            text: '关闭',
+            bold: true,
+            danger: true,
+          },
+        ],
+      ],
+      onClose: eventClose,
+    })
+  const three = () =>
+    Dialog.show({
+      content: '点蒙层关闭',
+      closeOnMaskClick: true,
+      onClose: eventClose,
+    })
+  /**
+   * 将弹窗fn推入队列
+   * @param fn
+   */
+  const push = (fn: Function) => {
+    if (queue.isEmpty()) {
+      queue.addQueue(fn)
+      queue.getFirstQueue()() // 启动出队逻辑
+    } else {
+      queue.addQueue(fn) // 循环中依然可以同时入队新的元素
+    }
+  }
+
+  push(one)
+  push(two)
+  push(three)
 }

@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import classNames from 'classnames'
-import { mergeProps } from 'utils'
 import { Mask, Space, Image, Icon } from 'simple-mobile'
+import { mergeProps } from '../../utils'
 import { Action, DialogActionButton } from './dialog-action-button'
 
 const classPrefix = 'ah-dialog'
@@ -27,6 +27,7 @@ export type DialogProps = {
   closeBtnContent?: ReactNode // 自定义关闭按钮
   closeBtnClassName?: string // 自定义关闭按钮ClassName, 提供 bottom 底部居中， right 右上角 样式
   visibleCloseBtn?: boolean // 是否显示关闭按钮
+  footerBottomContent?: ReactNode // footer下面内容
 }
 const defaultProps = {
   actions: [],
@@ -81,7 +82,7 @@ const Dialog: FC<DialogProps> = p => {
             </Space>
           </div>
           <div className={`${classPrefix}-footer`}>
-            {props.actions.map((row: any, index: number) => {
+            {props.actions.map((row, index) => {
               const actions = Array.isArray(row) ? row : [row]
               return (
                 <div className={`${classPrefix}-action-row`} key={index}>
@@ -101,6 +102,7 @@ const Dialog: FC<DialogProps> = p => {
               )
             })}
           </div>
+          {props.footerBottomContent && props.footerBottomContent}
         </div>
         {props.visibleCloseBtn && (
           <div
@@ -114,6 +116,7 @@ const Dialog: FC<DialogProps> = p => {
               props.closeBtnContent
             ) : (
               <Icon
+                name='close'
                 type='close_circle'
                 style={{
                   fill: 'none',
