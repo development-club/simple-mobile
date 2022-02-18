@@ -5,7 +5,7 @@ import {
   attachPropertiesToComponent,
   useNewControllableValue,
   getNativeAttributes,
-} from 'utils'
+} from '../../utils'
 import './tabs.scss'
 const classPrefix = `ah-tabs`
 
