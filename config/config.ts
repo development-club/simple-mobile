@@ -1,5 +1,5 @@
 // const pxToRem = require('postcss-pxtorem')
-
+const path = require('path')
 const navs = [
   {
     title: '指南',
@@ -53,7 +53,7 @@ const menus = {
       meta: {},
       children: [
         '/components/button',
-        '/components/icon',
+        '/components/icons',
         '/components/space',
         '/components/image',
       ],
@@ -67,6 +67,19 @@ const menus = {
         '/components/toast',
         '/components/loading',
       ],
+    },
+    {
+      title: '数据类',
+      children: [
+        '/components/letter',
+        '/components/steps',
+        '/components/progress-circle',
+        '/components/empty',
+      ],
+    },
+    {
+      title: '定制化组件',
+      children: [],
     },
   ],
 }
@@ -85,7 +98,7 @@ const mfsu =
 export default {
   mode: 'site',
   title: 'Simple Design Mobile',
-  logo: 'https://gw.alipayobjects.com/mdn/rms_2ddd4c/afts/img/A*XGPHS5H4-GkAAAAAAAAAAAAAARQnAQ',
+  logo: 'https://lh3.googleusercontent.com/BuFFQycqqzr9RevdRF1YnGPAzF_iekK78gamCxXZZjPHvvnjEPfxX4-7lJlSGAC93nRq8q_4UOCaYRjzOAOvxEb1DCAXEJvzIrfJZ2t8VVaZqV8mKkfQFK8GnD5bK7-XstRK1qJat6s6DPtg22sXw2TZtlrAtDHMscOGdm6z6eqv85mU5g4haJfN_D7psSFuLMxJTG9YjHnIUoip3N9-6jW_WNCDMEVUKHX4-KBxtqImvmGbbNWnf5QUBLKw8prpyqPzecvl4oP8Nk09eWiv3WJqIBw7JApYrOkgck8oe6IgZ4VE0VrxAvHWI3Xf_kqGZKPml4_yiyATOXDTVkosqyGv9pRitZBsKq0f2Q0mEwNJaGelLQtGGlHdCwDEY1jgoHFUaDFsE9Og00_cMpiKMMyXZ7tFzjQPcGWlvKagSZCiSAFl3oWbLaFUFr6Pf44ndv1-kETKZlVS9Q6Q8gw4ewGPJtePcP9tmkHPhIvCBA-uttBcul5a7Ye_ZU6ngoj6s0PnEeylGBRntW99hlQ6DjvIyMflHrmdLVX-xuQ4nFllPKXSXpJ_-DlNZTrmdFTyuML-MR8gVbWoTFPEaI86TbmOZ_S1nA9BgNZTPscSyViy0D3pCHfcBvAT9ZQecJk67Yd4YcstxBPu5J16x_L3RZdC3C4UmDI7hOLnqPBacTOk3Fp8LN022d-60EfiMww6S_qBPQXCnzCNvmZknTUgXMA=w282-h272-no?authuser=0',
   navs: navs,
   menus: menus,
   resolve: {
@@ -98,8 +111,7 @@ export default {
     'utils': process.cwd() + '/src/utils/index.ts',
   },
   styles: [
-    `
-    #root .__dumi-default-mobile-demo-layout {
+    ` #root .__dumi-default-mobile-demo-layout {
       padding: 0;
     }
     `,
@@ -124,4 +136,18 @@ export default {
     },
   },
   mfsu: mfsu,
+  chainWebpack: (config, { env, webpack, createCSSRule }) => {
+    console.log(webpack.modules)
+    config.module
+      .rule('sprite-loader')
+      .test(/\.svg$/)
+      .include.add(path.resolve(__dirname, '../src/components/icons/svgs')) // 只处理该目录下文件
+      .end()
+      .use('sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: '[name]',
+      })
+      .end()
+  },
 }
