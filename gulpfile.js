@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const scss = require('gulp-sass')(require('sass'))
 const path = require('path')
 const postcss = require('gulp-postcss')
+const replace = require('gulp-replace')
 const babel = require('gulp-babel')
 const ts = require('gulp-typescript')
 const del = require('del')
@@ -9,6 +10,7 @@ const webpackStream = require('webpack-stream')
 const webpack = require('webpack')
 const through = require('through2')
 const tsconfig = require('./tsconfig.json')
+const { each } = require('lodash')
 
 const pxMultiplePlugin = require('postcss-px-multiple')({ times: 2 })
 
@@ -51,13 +53,15 @@ function tsCJS() {
     })
     .pipe(tsProject)
     .pipe(babel())
+    .pipe(replace(/.scss/gi, '.css'))
+    .pipe(replace(/'utils/gi, "'../../utils"))
     .pipe(gulp.dest('lib/cjs/'))
 }
 
 function tsES() {
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'esnext',
+    module: 'ESNext',
   })
   return gulp
     .src(['src/**/*.{ts,tsx}'], {
@@ -65,6 +69,8 @@ function tsES() {
     })
     .pipe(tsProject)
     .pipe(babel())
+    .pipe(replace(/.scss/gi, '.css'))
+    .pipe(replace(/'utils/gi, "'../../utils"))
     .pipe(gulp.dest('lib/es/'))
 }
 
@@ -172,6 +178,16 @@ function build2xCSS() {
     )
 }
 
+function updateFile() {
+  return (
+    gulp
+      .src('./lib/es/components/button/*.{js,ts}')
+      // .pipe(replace(/utils/gi, '../../utils'))
+      .pipe(replace(/.scss/gi, '.css'))
+      .pipe(gulp.dest('./lib/es/components/button/'))
+  )
+}
+
 exports.umdWebpack = umdWebpack
 
 exports.default = gulp.series(
@@ -181,5 +197,10 @@ exports.default = gulp.series(
   copyMetaFiles,
   generatePackageJSON,
   gulp.series(create2xFolder, build2xCSS),
+  // updateFile,
   gulp.parallel(umdWebpack)
 )
+process.on('unhandledRejection', error => {
+  // Will print "unhandledRejection err is not defined"
+  console.log('unhandledRejection', error.message)
+})
