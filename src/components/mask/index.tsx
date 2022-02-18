@@ -2,15 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { ElementProps } from '../../utils/element-props'
-import { useInitialized } from '../../utils/use-initialized'
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-} from '../../utils/body-scroll-lock'
+import { ElementProps, useLockBodyScroll } from 'simple-mobile'
+import { useInitialized } from '../../utils'
 import './mask.scss'
-
 const classPrefix = `ah-mask`
+
 export type MaskProps = {
   visible?: boolean // 是否显示
   onMaskClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void // 点击蒙层自身触发
@@ -27,21 +23,20 @@ export const Mask: React.FC<MaskProps> = props => {
   const cls = classNames(classPrefix, props.className, {
     [`${classPrefix}-hidden`]: !props.visible,
   })
-
   const initialized = useInitialized(props.visible || props.forceRender)
   const ref = useRef<HTMLDivElement>(null)
-  const [lock, setLock] = useState(false) // 是否已加锁
-
+  const [lock, setLock] = useState(false) // 是否
+  // 禁止 body 滚动 https://github.com/willmcpo/body-scroll-lock
   useEffect(() => {
     const element = ref.current!
     if (props.visible && props.disableBodyScroll) {
-      disableBodyScroll()
+      useLockBodyScroll(props.visible)
       setLock(true)
       maskCount += 1
     } else {
-      if (maskCount) maskCount -= 1
       if (lock) {
-        if (!maskCount) enableBodyScroll()
+        if (maskCount) maskCount -= 1
+        if (!maskCount) useLockBodyScroll(props.visible || false)
         setLock(false)
       }
     }
@@ -62,6 +57,7 @@ export const Mask: React.FC<MaskProps> = props => {
 
   const node = (
     <CSSTransition
+      nodeRef={ref}
       in={props.visible}
       timeout={200}
       classNames={classPrefix}
