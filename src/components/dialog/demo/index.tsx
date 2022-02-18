@@ -199,11 +199,12 @@ export default () => {
           <DemoDescription content='你可以手动控制 visible 状态' />
         </Space>
       </DemoBlock>
-      <DemoBlock title='序列化弹窗'>
+      <DemoBlock title='队列多弹窗骤个弹出'>
         <Space direction='vertical' block>
           <Button block onClick={outQueue}>
             队列优先级弹窗
           </Button>
+          <DemoDescription content='通过 Queue 类的实例化对象的入列函数弹窗函数，弹窗关闭' />
         </Space>
       </DemoBlock>
     </>
