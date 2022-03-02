@@ -3,6 +3,7 @@ import Dialog from './dialog'
 import { show } from './show'
 import { alert } from './alert'
 import { confirm } from './confirm'
+import { dialogQueue } from './queue-dialog'
 import './dialog.scss'
 
 export type { DialogProps } from './dialog'
@@ -14,4 +15,5 @@ export default attachPropertiesToComponent(Dialog, {
   show,
   alert,
   confirm,
+  queue: dialogQueue,
 })

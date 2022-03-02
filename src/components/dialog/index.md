@@ -84,3 +84,26 @@ const handler = Dialog.show(props)
 | onConfirm   | 点击确认按钮时触发 | () => void \| Promise\<void> | -      |
 | cancelText  | 取消按钮的内容     | ReactNode                    | 取消   |
 | onCancel    | 点击取消按钮时触发 | () => void \| Promise\<void> | -      |
+
+### Dialog.queue
+
+该函数处理不同优先级多弹窗一次弹出，`queue` 接受的`dialogProps`参数同 `show`，另外增加了`index`可选参数来控制向序列某个位置插入新弹窗函数。
+
+此外，它还额外支持以下属性：
+
+| 属性        | 说明                                                   | 类型            | 默认值   |
+| ----------- | ------------------------------------------------------ | --------------- | -------- |
+| dialogProps | 构建新弹窗属性对象，同 show 方法                       | DialogShowProps |          |
+| index       | 从序列某个位置插入，超出序列长度从末尾添加，控制优先级 | number          | 可选参数 |
+
+```ts | pure
+  Dialog.queue({
+      content: '弹窗 1',
+      closeOnMaskClick: true,
+  })
+  // 开始插入指定位置
+  Dialog.queue({
+    content: '弹窗 2',
+    closeOnMaskClick: true,
+  },1)
+```
