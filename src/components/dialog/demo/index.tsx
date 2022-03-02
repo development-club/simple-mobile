@@ -242,39 +242,34 @@ const Declarative = () => {
 }
 
 const outQueue = () => {
-  setTimeout(
-    () =>
-      Dialog.queue(
+  Dialog.queue(
+    {
+      content: '黄河之水天上来',
+      closeOnAction: true,
+      actions: [
         {
-          content: '黄河之水天上来',
-          closeOnAction: true,
-          actions: [
-            {
-              key: 'online',
-              text: '在线阅读',
-            },
-            {
-              key: 'download',
-              text: '下载文件',
-            },
-            [
-              {
-                key: 'cancel',
-                text: '取消',
-              },
-              {
-                key: 'delete',
-                text: '删除',
-                bold: true,
-                danger: true,
-              },
-            ],
-          ],
+          key: 'online',
+          text: '在线阅读',
         },
-        0,
-        true
-      ),
-    1000
+        {
+          key: 'download',
+          text: '下载文件',
+        },
+        [
+          {
+            key: 'cancel',
+            text: '取消',
+          },
+          {
+            key: 'delete',
+            text: '删除',
+            bold: true,
+            danger: true,
+          },
+        ],
+      ],
+    },
+    0
   )
   Dialog.queue({
     content: '奔流到海不复返',
